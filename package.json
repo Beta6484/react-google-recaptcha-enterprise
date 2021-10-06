@@ -1,7 +1,7 @@
 {
-  "name": "react-google-recaptcha",
-  "version": "3.0.0-alpha.1",
-  "description": "React Component Wrapper for Google reCAPTCHA",
+  "name": "react-google-recaptcha-enterprise",
+  "version": "1.0.0",
+  "description": "React Component Wrapper for Google reCAPTCHA Enterprise",
   "main": "lib/index.js",
   "module": "lib/esm/index.js",
   "directories": {
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dozoisch/react-google-recaptcha.git"
+    "url": "https://github.com/Beta6484/react-google-recaptcha-enterprise.git"
   },
   "keywords": [
     "react",
@@ -28,12 +28,12 @@
     "recaptcha",
     "google-recaptcha"
   ],
-  "author": "Hugo Dozois <hugo@dozoisch.com>",
+  "author": "Base: Hugo Dozois <hugo@dozoisch.com> | Enterprise: Roberta Carvalho <beta6484@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dozoisch/react-google-recaptcha/issues"
+    "url": "https://github.com/Beta6484/react-google-recaptcha-enterprise/issues"
   },
-  "homepage": "https://github.com/dozoisch/react-google-recaptcha",
+  "homepage": "https://github.com/Beta6484/react-google-recaptcha-enterprise",
   "peerDependencies": {
     "react": ">=16.4.1"
   },

@@ -12,7 +12,7 @@ export default class ReCAPTCHA extends React.Component {
 
   getValue() {
     if (this.props.grecaptcha && this._widgetId !== undefined) {
-      return this.props.grecaptcha.getResponse(this._widgetId);
+      return this.props.grecaptcha.enterprise.getResponse(this._widgetId);
     }
     return null;
   }
@@ -28,7 +28,7 @@ export default class ReCAPTCHA extends React.Component {
     const { grecaptcha } = this.props;
 
     if (grecaptcha && this._widgetId !== undefined) {
-      return grecaptcha.execute(this._widgetId);
+      return grecaptcha.enterprise.execute(this._widgetId);
     } else {
       this._executeRequested = true;
     }
@@ -44,13 +44,13 @@ export default class ReCAPTCHA extends React.Component {
 
   reset() {
     if (this.props.grecaptcha && this._widgetId !== undefined) {
-      this.props.grecaptcha.reset(this._widgetId);
+      this.props.grecaptcha.enterprise.reset(this._widgetId);
     }
   }
 
   forceReset() {
     if (this.props.grecaptcha) {
-      this.props.grecaptcha.reset();
+      this.props.grecaptcha.enterprise.reset();
     }
   }
 
@@ -85,9 +85,9 @@ export default class ReCAPTCHA extends React.Component {
   }
 
   explicitRender() {
-    if (this.props.grecaptcha && this.props.grecaptcha.render && this._widgetId === undefined) {
+    if (this.props.grecaptcha && this.props.grecaptcha.enterprise && this.props.grecaptcha.enterprise.render && this._widgetId === undefined) {
       const wrapper = document.createElement("div");
-      this._widgetId = this.props.grecaptcha.render(wrapper, {
+      this._widgetId = this.props.grecaptcha.enterprise.render(wrapper, {
         sitekey: this.props.sitekey,
         callback: this.handleChange,
         theme: this.props.theme,

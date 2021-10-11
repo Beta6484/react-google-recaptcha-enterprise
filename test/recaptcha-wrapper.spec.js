@@ -24,12 +24,15 @@ describe("ReCAPTCHAWrapper", () => {
   beforeEach(() => {
     window.grecaptcha = grecaptchaMock;
   });
+
   afterEach(() => {
     delete window.grecaptcha;
   });
+
   it("should be wrapped properly", () => {
     expect(ReCAPTCHA.displayName).toBe("AsyncScriptLoader(ReCAPTCHA)");
   });
+
   it("should proxy functions", () => {
     const ReCaptchaRef = React.createRef();
     ReactTestUtils.renderIntoDocument(

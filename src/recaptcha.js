@@ -25,7 +25,7 @@ export default class ReCAPTCHA extends React.Component {
   }
 
   execute() {
-    const { grecaptcha } = this.props.grecaptcha;
+    const { grecaptcha } = this.props;
 
     if (grecaptcha && this._widgetId !== undefined) {
       return grecaptcha.enterprise.execute(this._widgetId);

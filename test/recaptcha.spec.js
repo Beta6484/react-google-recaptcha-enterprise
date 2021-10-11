@@ -11,6 +11,7 @@ describe("ReCAPTCHA", () => {
     );
     expect(ReactDOM.findDOMNode(instance).nodeName).toBe("DIV");
   });
+
   it("Rendered Component should contained passed props", () => {
     const props = {
       className: "TheClassName",
@@ -39,6 +40,7 @@ describe("ReCAPTCHA", () => {
       expect(instance).toBeTruthy();
     });
   });
+
   it("reset, should call grecaptcha.enterprise.reset with the widget id", () => {
     const WIDGET_ID = "someWidgetId";
     const grecaptchaMock = {
@@ -61,6 +63,7 @@ describe("ReCAPTCHA", () => {
     ReCaptchaRef.current.reset();
     expect(grecaptchaMock.enterprise.reset).toBeCalledWith(WIDGET_ID);
   });
+
   it("execute, should call grecaptcha.enterprise.execute with the widget id", () => {
     const WIDGET_ID = "someWidgetId";
     const grecaptchaMock = {
@@ -95,6 +98,7 @@ describe("ReCAPTCHA", () => {
     instance._internalRef.current.execute();
     expect(grecaptchaMock.enterprise.execute).toBeCalledWith(WIDGET_ID);
   });
+
   it("executeAsync, should call grecaptcha.enterprise.execute with the widget id", () => {
     const WIDGET_ID = "someWidgetId";
     const grecaptchaMock = {
@@ -129,6 +133,7 @@ describe("ReCAPTCHA", () => {
     instance._internalRef.current.executeAsync();
     expect(grecaptchaMock.enterprise.execute).toBeCalledWith(WIDGET_ID);
   });
+
   it("executeAsync, should return a promise that resolves with the token", () => {
     const WIDGET_ID = "someWidgetId";
     const TOKEN = "someToken";
@@ -170,6 +175,7 @@ describe("ReCAPTCHA", () => {
       expect(executeAsyncResolveValue).toBe(TOKEN);
     });
   });
+
   describe("Expired", () => {
     it("should call onChange with null when response is expired", () => {
       const WIDGET_ID = "someWidgetId";
@@ -193,6 +199,7 @@ describe("ReCAPTCHA", () => {
       ReCaptchaRef.current.handleExpired();
       expect(onChange).toBeCalledWith(null);
     });
+
     it("should call onExpired when response is expired", () => {
       const WIDGET_ID = "someWidgetId";
       const onChange = jest.fn();
@@ -219,6 +226,7 @@ describe("ReCAPTCHA", () => {
       expect(onExpired).toHaveBeenCalled();
     });
   });
+
   describe("Errored", () => {
     it("should call onErrored when grecaptcha errored", () => {
       const WIDGET_ID = "someWidgetId";

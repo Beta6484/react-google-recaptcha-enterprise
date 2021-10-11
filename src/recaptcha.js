@@ -11,21 +11,21 @@ export default class ReCAPTCHA extends React.Component {
   }
 
   getValue() {
-    if (this.props.grecaptcha && this._widgetId !== undefined) {
+    if (this.props.grecaptcha && this.props.grecaptcha.enterprise && this._widgetId !== undefined) {
       return this.props.grecaptcha.enterprise.getResponse(this._widgetId);
     }
     return null;
   }
 
   getWidgetId() {
-    if (this.props.grecaptcha && this._widgetId !== undefined) {
+    if (this.props.grecaptcha && this.props.grecaptcha.enterprise && this._widgetId !== undefined) {
       return this._widgetId;
     }
     return null;
   }
 
   execute() {
-    const { grecaptcha } = this.props;
+    const { grecaptcha } = this.props.grecaptcha;
 
     if (grecaptcha && this._widgetId !== undefined) {
       return grecaptcha.enterprise.execute(this._widgetId);
@@ -43,13 +43,13 @@ export default class ReCAPTCHA extends React.Component {
   }
 
   reset() {
-    if (this.props.grecaptcha && this._widgetId !== undefined) {
+    if (this.props.grecaptcha && this.props.grecaptcha.enterprise && this._widgetId !== undefined) {
       this.props.grecaptcha.enterprise.reset(this._widgetId);
     }
   }
 
   forceReset() {
-    if (this.props.grecaptcha) {
+    if (this.props.grecaptcha.enterprise) {
       this.props.grecaptcha.enterprise.reset();
     }
   }
@@ -108,7 +108,12 @@ export default class ReCAPTCHA extends React.Component {
       });
       this.captcha.appendChild(wrapper);
     }
-    if (this._executeRequested && this.props.grecaptcha && this._widgetId !== undefined) {
+    if (
+      this._executeRequested &&
+      this.props.grecaptcha &&
+      this.props.grecaptcha.enterprise &&
+      this._widgetId !== undefined
+    ) {
       this._executeRequested = false;
       this.execute();
     }

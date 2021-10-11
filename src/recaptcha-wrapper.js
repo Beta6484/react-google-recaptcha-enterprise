@@ -9,13 +9,11 @@ function getOptions() {
 }
 
 function getURL() {
-  const dynamicOptions = getOptions();
-  const hostname = dynamicOptions.useRecaptchaNet ? "recaptcha.net" : "www.google.com";
-  return `https://${hostname}/recaptcha/enterprise.js?onload=${callbackName}&render=explicit`;
+  return `https://www.google.com/recaptcha/enterprise.js?onload=${callbackName}&render=explicit`;
 }
 
 export default makeAsyncScriptLoader(getURL, {
   callbackName,
   globalName,
-  attributes: getOptions().nonce ? {nonce: getOptions().nonce} : {},
+  attributes: getOptions().nonce ? { nonce: getOptions().nonce } : {},
 })(ReCAPTCHA);

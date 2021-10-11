@@ -1,3 +1,4 @@
+/* eslint-disable react/no-find-dom-node */
 import React from "react";
 import ReactDOM from "react-dom";
 import ReactTestUtils from "react-dom/test-utils";
@@ -24,10 +25,12 @@ describe("ReCAPTCHA", () => {
   it("should call grecaptcha.enterprise.render, when it is already loaded", () => {
     return new Promise((resolve) => {
       const grecaptchaMock = {
-        render(node, options) {
-          expect(node).toBeTruthy();
-          expect(options.sitekey).toBe("xxx");
-          resolve();
+        enterprise: {
+          render(node, options) {
+            expect(node).toBeTruthy();
+            expect(options.sitekey).toBe("xxx");
+            resolve();
+          },
         },
       };
       const instance = ReactTestUtils.renderIntoDocument(
@@ -39,10 +42,12 @@ describe("ReCAPTCHA", () => {
   it("reset, should call grecaptcha.enterprise.reset with the widget id", () => {
     const WIDGET_ID = "someWidgetId";
     const grecaptchaMock = {
-      render() {
-        return WIDGET_ID;
+      enterprise: {
+        render() {
+          return WIDGET_ID;
+        },
+        reset: jest.fn(),
       },
-      reset: jest.fn(),
     };
     const ReCaptchaRef = React.createRef();
     ReactTestUtils.renderIntoDocument(
@@ -54,15 +59,17 @@ describe("ReCAPTCHA", () => {
       />,
     );
     ReCaptchaRef.current.reset();
-    expect(grecaptchaMock.reset).toBeCalledWith(WIDGET_ID);
+    expect(grecaptchaMock.enterprise.reset).toBeCalledWith(WIDGET_ID);
   });
   it("execute, should call grecaptcha.enterprise.execute with the widget id", () => {
     const WIDGET_ID = "someWidgetId";
     const grecaptchaMock = {
-      render() {
-        return WIDGET_ID;
+      enterprise: {
+        render() {
+          return WIDGET_ID;
+        },
+        execute: jest.fn(),
       },
-      execute: jest.fn(),
     };
     // wrapping component example that applies a ref to ReCAPTCHA
     class WrappingComponent extends React.Component {
@@ -86,15 +93,17 @@ describe("ReCAPTCHA", () => {
     }
     const instance = ReactTestUtils.renderIntoDocument(React.createElement(WrappingComponent));
     instance._internalRef.current.execute();
-    expect(grecaptchaMock.execute).toBeCalledWith(WIDGET_ID);
+    expect(grecaptchaMock.enterprise.execute).toBeCalledWith(WIDGET_ID);
   });
   it("executeAsync, should call grecaptcha.enterprise.execute with the widget id", () => {
     const WIDGET_ID = "someWidgetId";
     const grecaptchaMock = {
-      render() {
-        return WIDGET_ID;
+      enterprise: {
+        render() {
+          return WIDGET_ID;
+        },
+        execute: jest.fn(),
       },
-      execute: jest.fn(),
     };
     // wrapping component example that applies a ref to ReCAPTCHA
     class WrappingComponent extends React.Component {
@@ -118,18 +127,20 @@ describe("ReCAPTCHA", () => {
     }
     const instance = ReactTestUtils.renderIntoDocument(React.createElement(WrappingComponent));
     instance._internalRef.current.executeAsync();
-    expect(grecaptchaMock.execute).toBeCalledWith(WIDGET_ID);
+    expect(grecaptchaMock.enterprise.execute).toBeCalledWith(WIDGET_ID);
   });
   it("executeAsync, should return a promise that resolves with the token", () => {
     const WIDGET_ID = "someWidgetId";
     const TOKEN = "someToken";
     const grecaptchaMock = {
-      render(_, { callback }) {
-        this.callback = callback;
-        return WIDGET_ID;
-      },
-      execute() {
-        this.callback(TOKEN);
+      enterprise: {
+        render(_, { callback }) {
+          this.callback = callback;
+          return WIDGET_ID;
+        },
+        execute() {
+          this.callback(TOKEN);
+        },
       },
     };
     // wrapping component example that applies a ref to ReCAPTCHA
@@ -164,8 +175,10 @@ describe("ReCAPTCHA", () => {
       const WIDGET_ID = "someWidgetId";
       const onChange = jest.fn();
       const grecaptchaMock = {
-        render() {
-          return WIDGET_ID;
+        enterprise: {
+          render() {
+            return WIDGET_ID;
+          },
         },
       };
       const ReCaptchaRef = React.createRef();
@@ -185,8 +198,10 @@ describe("ReCAPTCHA", () => {
       const onChange = jest.fn();
       const onExpired = jest.fn();
       const grecaptchaMock = {
-        render() {
-          return WIDGET_ID;
+        enterprise: {
+          render() {
+            return WIDGET_ID;
+          },
         },
       };
       const ReCaptchaRef = React.createRef();
@@ -209,8 +224,10 @@ describe("ReCAPTCHA", () => {
       const WIDGET_ID = "someWidgetId";
       const onErrored = jest.fn();
       const grecaptchaMock = {
-        render() {
-          return WIDGET_ID;
+        enterprise: {
+          render() {
+            return WIDGET_ID;
+          },
         },
       };
       const ReCaptchaRef = React.createRef();

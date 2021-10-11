@@ -4,12 +4,12 @@
 
 [![Edit react-google-recaptcha example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/1y4zzjq37l)
 
-React component for [Google reCAPTCHA v2][reCAPTCHA].
+React component for [Google reCAPTCHA Enterprise][reCAPTCHA].
 
 ## Installation
 
 ```shell
-npm install --save react-google-recaptcha
+npm install --save react-gre
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ The default usage imports a wrapped component that loads the google recaptcha sc
 
 Code Example:
 ```jsx
-import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-gre";
 
 function onChange(value) {
   console.log("Captcha value:", value);

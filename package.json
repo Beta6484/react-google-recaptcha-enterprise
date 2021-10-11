@@ -1,5 +1,5 @@
 {
-  "name": "react-google-recaptcha-enterprise",
+  "name": "react-gre",
   "version": "1.0.0",
   "description": "React Component Wrapper for Google reCAPTCHA Enterprise",
   "main": "lib/index.js",
@@ -19,10 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Beta6484/react-google-recaptcha-enterprise.git"
+    "url": "https://github.com/Beta6484/react-gre.git"
   },
   "keywords": [
     "react",
+    "react-gre",
     "react-component",
     "captcha",
     "recaptcha",
@@ -31,9 +32,9 @@
   "author": "Base: Hugo Dozois <hugo@dozoisch.com> | Enterprise: Roberta Carvalho <beta6484@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Beta6484/react-google-recaptcha-enterprise/issues"
+    "url": "https://github.com/Beta6484/react-gre/issues"
   },
-  "homepage": "https://github.com/Beta6484/react-google-recaptcha-enterprise",
+  "homepage": "https://github.com/Beta6484/react-gre",
   "peerDependencies": {
     "react": ">=16.4.1"
   },
@@ -43,11 +44,11 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "cross-env": "^7.0.3",
-    "eslint": "^7.15.0",
+    "eslint": "^8.0.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
-    "jest": "^26.6.3",
+    "jest": "^27.2.5",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
